@@ -14,10 +14,10 @@ c.Authenticator.admin_users = {'admin', 'bigParisi', 'parisi'}
 from oauthenticator.github import GitHubOAuthenticator
 c.JupyterHub.authenticator_class = GitHubOAuthenticator
 
-c.GitHubOAuthenticator.oauth_callback_url = \
-                    'http://<host_ip_addr>/hub/oauth_callback'
-c.GitHubOAuthenticator.client_id = '<client_id>'
-c.GitHubOAuthenticator.client_secret = '<client_secret>'
+# c.GitHubOAuthenticator.oauth_callback_url = \
+#                     'http://<host_ip_addr>/hub/oauth_callback'
+# c.GitHubOAuthenticator.client_id = '<client_id>'
+# c.GitHubOAuthenticator.client_secret = '<client_secret>'
 
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir

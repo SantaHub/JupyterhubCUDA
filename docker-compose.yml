@@ -1,0 +1,20 @@
+version: '2.3'
+
+services:
+  jupyterhub:
+    build: ./jupyterhub
+    image: jupyterhub
+    ports:
+      - "80:8000"
+    container_name: jupyterhub-container
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jupyterhub_data:/srv/jupyterhub
+    environment:
+      DOCKER_JUPYTER_CONTAINER: jupyter-notebook
+      DOCKER_JUPYTER_IMAGE: tensorflow-notebook
+      DOCKER_NETWORK_NAME: ${COMPOSE_PROJECT_NAME}_default
+      HUB_IP: jupyterhub
+
+volumes:
+  jupyterhub_data:
