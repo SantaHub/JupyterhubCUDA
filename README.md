@@ -10,18 +10,37 @@
  - install for docker
  ```
 sudo apt install curl
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list 
+sudo apt install docker
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt update
+sudo apt install -y nvidia-docker2
 
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list 
-sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
-sudo apt-get install nvidia-container-runtime
-
-sudo systemctl daemon-reload
 sudo systemctl restart docker
-sudo systemctl status docker
-
 ```
+Test with 
+```
+sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+```
+
+
+## Messing default hub image
+
+ - Run default jupyterhub image 
+ ```
+ docker run -d -p 8000:8000 --name jupyterhub jupyterhub/jupyterhub jupyterhub
+ ```
+ - Go to image bash
+ ```
+docker exec -it jupyterhub bash
+```
+ - add new user
+ ```
+ adduser student
+ ```
+ - Tried to login with new user student but had 
+ `Spawn failed: Server at http://127.0.0.1:49199/user/student/ didn't respond in 30 seconds`
 
 
 ## Jupyterhub image creation 
