@@ -7,6 +7,23 @@
  - `nvidia-smi` should list the GPUs you have.
  - since we are using docker images we dont have to install CUDA on host machine
 
+ - install for docker
+ ```
+sudo apt install curl
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list 
+
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list 
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo apt-get install nvidia-container-runtime
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo systemctl status docker
+
+```
+
+
 ## Jupyterhub image creation 
 
  - The dockerfile and config file are in the same repo
