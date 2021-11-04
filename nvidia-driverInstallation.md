@@ -23,6 +23,9 @@ sudo reboot
 
 If Still stuck, go ahead and disable secure boot on BIOS. Had to do that on Euler.
 
+Also give a try installing an HWE,
+https://ubuntu.pkgs.org/20.04/ubuntu-updates-restricted-amd64/linux-modules-nvidia-470-generic-hwe-20.04_5.11.0-38.42~20.04.1_amd64.deb.html
+
 ## Ref
 
 https://forums.developer.nvidia.com/t/nvidia-smi-has-failed-because-it-couldn-t-communicate-with-the-nvidia-driver-after-updating-ubuntu-20-04/170985/6
