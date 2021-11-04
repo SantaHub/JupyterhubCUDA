@@ -22,8 +22,9 @@ Test with
 sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ```
 
-## Messing default hub image
+## Login to Jupyterhub
 
+Using PAM authenticator. So needs to create users in image.
  - Run default jupyterhub image 
  ```
  docker run -d -p 8000:8000 --name jupyterhub jupyterhub/jupyterhub jupyterhub
@@ -36,9 +37,21 @@ docker exec -it jupyterhub bash
  ```
  adduser student
  ```
- - Tried to login with new user student but had 
- `Spawn failed: Server at http://127.0.0.1:49199/user/student/ didn't respond in 30 seconds`
+- add jupyter notebook for spawning
+```
+ pip install notebook
+```
 
+ Login as student at http://localhost:8000
+
+
+## Verifying CUDA installation in Jupyterhub
+
+```
+import tensorflow as tf
+tf.config.list.physical_devices('GPU')
+tf.test.is_build_with_cuda()
+```
 
 ## Jupyterhub image creation 
 
