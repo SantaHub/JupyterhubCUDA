@@ -21,6 +21,8 @@ sudo update-initramfs -u #Updates the bootloader file and hopefully whitelist nv
 sudo reboot
 ```
 
+If Still stuck, go ahead and disable secure boot on BIOS. Had to do that on Euler.
+
 ## Ref
 
 https://forums.developer.nvidia.com/t/nvidia-smi-has-failed-because-it-couldn-t-communicate-with-the-nvidia-driver-after-updating-ubuntu-20-04/170985/6
