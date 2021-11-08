@@ -70,3 +70,9 @@ docker run --rm --gpus all jupyterhub jupyterhub_server
 
  
 Ref : https://tustunkok.github.io/tutorial/notes-to-myself/vps/2020/05/16/how-to-create-a-gpu-powered-containerized-multi-user-jupyterhub-research-server.html
+
+
+## TODO 
+
+- install tensorflow docker image
+https://www.tensorflow.org/install/docker
