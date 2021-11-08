@@ -53,6 +53,14 @@ tf.config.list.physical_devices('GPU')
 tf.test.is_build_with_cuda()
 ```
 
+## Saving docker images
+
+Commit changes on image with a tag
+```
+docker commit <IAMGE_ID/IMAGE_NAME> <NEW-IMAGE-NAME>
+docker commit 0fd419771dcd hub-with-student
+```
+
 ## Jupyterhub image creation 
 
  - The dockerfile and config file are in the same repo
