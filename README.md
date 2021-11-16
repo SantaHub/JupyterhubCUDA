@@ -95,9 +95,25 @@ rstudio-server restart
 jupyterhub
 ```
 
-# Saving docker images
+# Docker Commands
 
-Commit changes on image with a tag
+Run Docker image
+```
+docker run -d --gpus all -p 8000:8000 -p 8787:8787 --name dl1 datalab/jupyterhub_cuda_rserver jupyterhub
+```
+
+Execute a command on the container
+```
+docker exec -it cd0c0aadcd96 bash
+
+```
+
+Copy stuffs
+```
+docker cp <containerId>:/file/path/within/container /host/path/target
+```
+
+Saving docker images
 ```
 docker commit <IAMGE_ID/IMAGE_NAME> <NEW-IMAGE-NAME>
 docker commit 0fd419771dcd jupyterHubDL
