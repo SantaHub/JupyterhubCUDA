@@ -1,5 +1,13 @@
 # JupyterhubCUDA
 
+# Cloning the Datalab Image
+
+```
+docker run -d --gpus all -p 8000:8000 -p 8787:8787 --name datalab_image austinputhen/datalab:version2 
+
+docker exec -it IMAGE_ID bash
+```
+
 ## GPU Activation
 
  - install the proprietary and tested NVIDIA Driver in additional drivers option in software & update
