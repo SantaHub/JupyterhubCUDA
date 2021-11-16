@@ -22,42 +22,25 @@ Test with
 sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ```
 
-## Installing Jupyterhub
+# Get tensorflow image 
 
-- login to the docker at bash
+
+Ref : https://hub.docker.com/r/tensorflow/tensorflow/
+```
+
+docker run --rm -it --gpus all -p 8000:8000 -p 8787:8787  --name datalab  tensorflow/tensorflow bash
+
+```
+
+# Installing Jupyterhub
+
 ```
  apt install npm
  pip install jupyterhub
  npm install -g configurable-http-proxy
 ```
 
-## Adding new User
-
-```
-adduser student
-
-```
-
-## Login to Jupyterhub
-
-Using PAM authenticator. So needs to create users in image.
- - Run default jupyterhub image 
- ```
- docker run -d -p 8000:8000 --name jupyterhub jupyterhub/jupyterhub jupyterhub
- ```
- - Go to image bash
- ```
-docker exec -it jupyterhub bash
-```
-- add jupyter notebook for spawning
-```
- pip install notebook
-```
-
- Login as student at http://localhost:8000
-
-
-## Verifying CUDA installation in Jupyterhub
+# Verifying CUDA installation in Jupyterhub
 
 ```
 import tensorflow as tf
@@ -83,36 +66,7 @@ torch.cuda.get_device_name(0)
 
 ```
 
-## Saving docker images
-
-Commit changes on image with a tag
-```
-docker commit <IAMGE_ID/IMAGE_NAME> <NEW-IMAGE-NAME>
-docker commit 0fd419771dcd hub-with-student
-
-```
-
-## Jupyterhub image creation 
-
- - The dockerfile and config file are in the same repo
- - Build docker image. use sudo docker build or add user to docker group
-
- ``` 
- sudo usermod -aG docker $USER
- docker build --rm -t jupyterhub_custom .
- ```
- 
-- run the docker image
-```
-docker run --rm --gpus all jupyterhub jupyterhub_server
-```
-
- 
-Ref : https://tustunkok.github.io/tutorial/notes-to-myself/vps/2020/05/16/how-to-create-a-gpu-powered-containerized-multi-user-jupyterhub-research-server.html
-
-
-
-## Install R Server
+# Install R Server
 
 ```
 
@@ -121,5 +75,31 @@ wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2021.09.1-
 sudo gdebi rstudio-server-2021.09.1-372-amd64.deb
 
 sudo rstudio-server verify-installation
+
+```
+
+Login to RServer : http://localhost:8787/
+
+# Adding new User
+
+```
+adduser student
+
+```
+
+# Start Services
+
+Add this to bashrc.
+```
+rstudio-server restart
+jupyterhub
+```
+
+# Saving docker images
+
+Commit changes on image with a tag
+```
+docker commit <IAMGE_ID/IMAGE_NAME> <NEW-IMAGE-NAME>
+docker commit 0fd419771dcd jupyterHubDL
 
 ```
