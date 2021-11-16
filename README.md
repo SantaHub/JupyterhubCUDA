@@ -111,6 +111,7 @@ docker exec -it cd0c0aadcd96 bash
 Copy stuffs
 ```
 docker cp <containerId>:/file/path/within/container /host/path/target
+docker cp ~/Documents/JupyterhubCUDA/bash_startup 6586b8b05fd8:/root/.bash_startup
 ```
 
 Saving docker images
